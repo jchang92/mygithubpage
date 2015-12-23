@@ -1,4 +1,7 @@
 <?php
+// Error reporting for taging - delete before production
+error_reporting(E_ALL);
+ini_set('display_errors',1);
 // Check for empty fields
 if(empty($_POST['name'])  		||
    empty($_POST['email']) 		||
@@ -24,3 +27,12 @@ $headers .= "Reply-To: $email_address";
 mail($to,$email_subject,$email_body,$headers);
 return true;			
 ?>
+
+<form method="post" action="contact_me.php">
+  <input type="hidden" name='sendflag' value="send">
+  Your Email: <input name="email" type="text" /><br />
+  Message:<br />
+  <textarea name="message" rows="15" cols="40">
+  </textarea><br />
+  <input type="submit" />
+</form>
