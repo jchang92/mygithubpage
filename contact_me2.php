@@ -2,7 +2,7 @@
     if (isset($_POST["submit"])) {
         $name = $_POST['name'];
         $email = $_POST['email'];
-        //$phone = $_POST['phone'];
+        $phone = $_POST['phone'];
         $message = $_POST['message'];
        
         $from = 'Demo Contact Form'; 
@@ -21,16 +21,16 @@
             $errEmail = 'Please enter a valid email address';
         }
          // Check if phone has been entered
-        //if (!$_POST['phone']) {
-            //$errName = 'Please enter your phone';
-        //}
+        if (!$_POST['phone']) {
+            $errPhone = 'Please enter your phone';
+        }
         //Check if message has been entered
         if (!$_POST['message']) {
             $errMessage = 'Please enter your message';
         }
  
 // If there are no errors, send the email
-if (!$errName && !$errEmail && !$errMessage ) {
+if (!$errName && !$errEmail && !$errMessage && !$errPhone ) {
     if (mail ($to, $subject, $body, $from)) {
         $result='<div class="alert alert-success">Thank You! I will be in touch</div>';
     } else {
